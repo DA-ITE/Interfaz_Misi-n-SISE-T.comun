@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Misión SISE | 4 Misiones</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Barlow:wght@400;500;600;700;800&display=swap');
+:root{
+  --sise:#FF0E49;
+  --dark:#111827;
+  --text:#202737;
+  --muted:#697386;
+  --bg:#F7F8FA;
+  --white:#FFFFFF;
+  --line:#E7E9EE;
+  --soft:#FFF2F6;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);font-family:Barlow,Arial,sans-serif;color:var(--text)}
+.wrap{max-width:1120px;margin:22px auto;padding:0 14px}
+.mission{position:relative;overflow:hidden;background:linear-gradient(135deg,#fff 0%,#fbfbfc 58%,#f5f5f6 100%);border:1px solid var(--line);border-radius:28px;box-shadow:0 20px 55px rgba(22,39,72,.10)}
+.mission:after{content:"";position:absolute;left:-130px;bottom:-180px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(255,14,73,.13),rgba(255,14,73,0) 68%)}
+.top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:center;padding:18px 5%;border-bottom:1px solid var(--line);background:rgba(255,255,255,.9)}
+.brand{font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--dark)}
+.status{display:inline-flex;align-items:center;gap:8px;border:1px solid #ffd7e3;background:#fff6f9;color:var(--sise);border-radius:999px;padding:8px 12px;font-size:12px;font-weight:800;letter-spacing:.7px}
+.status i{width:8px;height:8px;border-radius:50%;background:var(--sise);box-shadow:0 0 0 5px rgba(255,14,73,.10)}
+.hero{position:relative;z-index:2;display:grid;grid-template-columns:1.18fr .82fr;gap:34px;padding:52px 5% 42px;align-items:center}
+.eyebrow{color:var(--sise);font-size:13px;font-weight:800;letter-spacing:2.2px;text-transform:uppercase}
+h1{font:900 clamp(48px,7vw,82px)/.93 'Barlow Condensed','Arial Narrow',sans-serif;margin:16px 0 18px;color:var(--dark)}
+h1 .pink{color:var(--sise)}
+.lead{max-width:680px;color:var(--muted);font-size:19px;line-height:1.55;margin:0 0 22px}
+.badges{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 26px}
+.badge{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:13px;font-weight:800;color:#3d4555;box-shadow:0 6px 18px rgba(24,46,83,.05)}
+.badge b{color:var(--sise)}
+.access-note{margin:20px 0 18px;background:#fff4f7;border:1px solid #ffd3df;border-left:5px solid var(--sise);border-radius:14px;padding:16px 18px;color:#3f4656;font-size:15px;line-height:1.5}
+.access-note strong{color:var(--sise)}
+.cta{display:inline-flex;align-items:center;gap:12px;text-decoration:none;background:var(--sise);color:#fff!important;padding:17px 26px;border-radius:14px;font-weight:800;font-size:18px;box-shadow:0 14px 30px rgba(255,14,73,.23);transition:.2s transform,.2s box-shadow}
+.cta:hover,.cta:focus{transform:translateY(-2px);box-shadow:0 17px 34px rgba(255,14,73,.28)}
+.hint{display:block;margin-top:11px;color:#8a94a6;font-size:13px}
+.map-card{position:relative;border:1px solid var(--line);border-radius:24px;background:#fff;box-shadow:0 14px 35px rgba(30,59,99,.08);padding:26px 24px;overflow:hidden}
+.map-card:before{content:"";position:absolute;width:250px;height:250px;border-radius:50%;right:-95px;top:-100px;background:#FFE9F0}
+.map-card h3{position:relative;margin:0 0 5px;font:800 28px 'Barlow Condensed','Arial Narrow',sans-serif;color:var(--dark)}
+.map-card p{position:relative;margin:0;color:#737d8d;font-size:14px}
+.route{position:relative;margin-top:24px;padding:2px 0}
+.route:before{content:"";position:absolute;left:26px;top:30px;bottom:30px;width:4px;border-radius:9px;background:linear-gradient(var(--sise),var(--dark))}
+.node{position:relative;display:grid;grid-template-columns:54px 1fr;gap:13px;align-items:center;margin:16px 0}
+.node .icon{width:52px;height:52px;border-radius:16px;background:#fff;border:1px solid var(--line);display:grid;place-items:center;font-size:22px;box-shadow:0 6px 18px rgba(25,49,82,.08);z-index:2}
+.node strong{font-size:16px;color:var(--dark)}
+.node span{display:block;color:#8a95a7;font-size:12px;margin-top:2px}
+.node.active .icon,.node.final .icon{background:var(--soft);border-color:#ffc5d7;color:var(--sise)}
+.footer{position:relative;z-index:2;padding:16px 5%;border-top:1px solid var(--line);background:#fff;color:#7c8799;font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.logo-placeholder{font-weight:800;color:var(--dark)}
+@media(max-width:840px){.hero{grid-template-columns:1fr}.map-card{min-height:auto}}
+@media(max-width:560px){.wrap{margin:10px auto;padding:0 8px}.mission{border-radius:20px}.top{padding:16px 5%}.hero{padding:36px 5% 30px}h1{font-size:48px}.lead{font-size:16px}.cta{width:100%;justify-content:center}.footer{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<main class="mission">
+  <header class="top">
+    <div class="brand">[LOGO INSTITUTO SISE]</div>
+    <div class="status"><i></i>MISIÓN ACTIVADA</div>
+  </header>
+
+  <section class="hero">
+    <div>
+      <div class="eyebrow">MISIÓN SISE · EXPERIENCIA GAMIFICADA</div>
+      <h1>Activa <span class="pink">tu perfil profesional</span> con 4 llaves y 1 misión final.</h1>
+      <p class="lead">Avanza por cada misión, completa los retos y desbloquea refuerzos que te ayudarán a comunicar, resolver, negociar y generar impacto en situaciones profesionales.</p>
+
+      <div class="badges">
+        <div class="badge"><b>4</b> misiones</div>
+        <div class="badge">🔑 4 llaves</div>
+        <div class="badge">📚 Refuerzos desbloqueables</div>
+        <div class="badge">🎯 Apoyos de misión</div>
+      </div>
+
+      <div class="access-note" role="note">
+        <strong>Importante para guardar tu progreso:</strong> cada vez que ingreses utiliza exactamente el mismo <strong>correo, nombre y apellido</strong> con los que te registraste la primera vez. Así podrás recuperar tu historial y continuar desde tu último avance.
+      </div>
+
+      <a class="cta" href="https://da-ite.github.io/Misi-n-SISE_T.COMUNI/" target="_blank" rel="noopener noreferrer">ENTRAR A MISIÓN SISE →</a>
+      <span class="hint">La experiencia se abrirá en una nueva pestaña.</span>
+    </div>
+
+    <aside class="map-card" aria-label="Ruta de 4 misiones">
+      <h3>Ruta de 4 misiones</h3>
+      <p>Completa cada reto para desbloquear el siguiente apoyo.</p>
+      <div class="route">
+        <div class="node active">
+          <div class="icon">💬</div>
+          <div><strong>01 · Comunicación estratégica</strong><span>Comunica con claridad, intención y criterio.</span></div>
+        </div>
+        <div class="node">
+          <div class="icon">🤝</div>
+          <div><strong>02 · Resolución de conflictos</strong><span>Analiza situaciones y construye soluciones.</span></div>
+        </div>
+        <div class="node">
+          <div class="icon">⚖️</div>
+          <div><strong>03 · Negociación</strong><span>Defiende propuestas y busca acuerdos efectivos.</span></div>
+        </div>
+        <div class="node final">
+          <div class="icon">🎯</div>
+          <div><strong>04 · Impacto</strong><span>Integra lo aprendido y demuestra tu aporte.</span></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <footer class="footer">
+    <span>Instituto SISE – Grupo EducaD</span>
+    <span>Misión SISE · 4 misiones</span>
+  </footer>
+</main>
+</div>
+</body>
+</html>
